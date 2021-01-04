@@ -24,7 +24,6 @@ const createBlog = (req, res) => {
   newBlog.content = req.body.content;
 
   newBlog.save((err, data) => {
-    // console.log(data);
     try {
       if (err) {
         console.log(err);
@@ -48,7 +47,6 @@ const middleware = (req, res, next) => {
     },
     filename: function (req, file, cb) {
       imageName = file.originalname;
-      //imageName += "_randomstring"
       cb(null, imageName);
     },
   });
@@ -68,10 +66,7 @@ const middleware = (req, res, next) => {
     newBlog.img.data = req.file.path;
     newBlog.img.contentType = "images/jpeg";
 
-    // req.imageName = imageName;
-    // req.uploadError = err;
     newBlog.save((err, data) => {
-      // console.log(data);
       try {
         if (err) {
           console.log(err);
